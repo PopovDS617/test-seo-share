@@ -1,7 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function TestResultPage(props: {
   data: { result: string };
@@ -11,6 +11,11 @@ export default function TestResultPage(props: {
     image: { url: string; alt: string };
   };
 }) {
+  let leftIndent = 0;
+  let topIndent = 0;
+
+  const [href, setHref] = useState("");
+
   useEffect(() => {
     if (window !== undefined) {
       window.history.replaceState(
@@ -18,6 +23,9 @@ export default function TestResultPage(props: {
         "",
         window.location.href + "&done=true",
       );
+      leftIndent = (window.screen.width - windowW) / 2;
+      topIndent = (window.screen.height - windowH) / 2;
+      setHref(window.location.href + "&done=true");
     }
   }, []);
 
@@ -26,18 +34,13 @@ export default function TestResultPage(props: {
 
   const router = useRouter();
 
-  console.log(router);
-
   const currPath = router.asPath;
   const destination = currPath.split("/").slice(0, -1).join("/");
 
-  const currHref = window.location.href + "&done=true";
-  const shareLink = `https://telegram.me/share/url?url=${currHref}&text=Я прошел тест 'Какое ты дерево?' и мой результат - ${data.result}`;
+  const shareLink = `https://telegram.me/share/url?url=${href}&text=Я прошел тест 'Какое ты дерево?' и мой результат - ${data.result}`;
 
   const windowH = 500;
   const windowW = 500;
-  const leftIndent = (window.screen.width - windowW) / 2;
-  const topIndent = (window.screen.height - windowH) / 2;
 
   const params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=${windowW},height=${windowH},left=${leftIndent},top=${topIndent}`;
 
