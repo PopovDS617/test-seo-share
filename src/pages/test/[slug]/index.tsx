@@ -1,6 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { NextSeo } from "next-seo";
 import { useEffect, useState } from "react";
+import { OG_IMAGE } from "../../../../next-seo.config";
 
 export default function TestPage(props: {
   data: { result: string };
@@ -149,7 +150,12 @@ export const getServerSideProps: GetServerSideProps = async (
   const data = { result: "" };
 
   const seoDescription = "Тест про деревья";
-  const seoImage = { alt: "", url: "" };
+  const seoImage = {
+    alt: "",
+    url: "",
+    width: OG_IMAGE.WIDTH,
+    height: OG_IMAGE.HEIGHT,
+  };
 
   let seoTitle = "Я прошел тест 'Какое ты дерево?' и мой результат - ";
 
