@@ -176,22 +176,22 @@ export const getServerSideProps: GetServerSideProps = async (
     case "1":
       data.result = "Дуб";
       seoImage.url = "/d.jpg";
-      seoTitle += data.result;
+
       break;
     case "2":
       data.result = "Берёза";
       seoImage.url = "/b.jpg";
-      seoTitle += data.result;
+
       break;
     case "3":
       data.result = "Липа";
       seoImage.url = "/l.jpg";
-      seoTitle += data.result;
+
       break;
     default:
       data.result = "";
       seoImage.url = "/default.jpg";
-      seoTitle = 'Тест "Какое ты дерево?"';
+
       break;
   }
 
