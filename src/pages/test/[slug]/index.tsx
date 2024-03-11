@@ -79,7 +79,7 @@ export default function TestPage(props: {
 
   useEffect(() => {
     if (window !== undefined) {
-      shareLink = `https://telegram.me/share/url?url=${window.location.href}&text=${shareTitle}`;
+      shareLink = `https://telegram.me/share/url?url=${window.location.href}&text=[title из api telegram]${shareTitle}`;
     }
   }, [shareTitle]);
 
@@ -149,7 +149,7 @@ export const getServerSideProps: GetServerSideProps = async (
 
   const data = { result: "" };
 
-  const seoDescription = "Тест про деревья";
+  const seoDescription = "[og:description] Тест про деревья";
   const seoImage = {
     alt: "",
     url: "",
@@ -157,7 +157,8 @@ export const getServerSideProps: GetServerSideProps = async (
     height: OG_IMAGE.HEIGHT,
   };
 
-  let seoTitle = "Я прошел тест 'Какое ты дерево?' и мой результат - ";
+  let seoTitle =
+    "[og:title] Я прошел тест 'Какое ты дерево?' и мой результат - ";
 
   switch (variant) {
     case "1":
