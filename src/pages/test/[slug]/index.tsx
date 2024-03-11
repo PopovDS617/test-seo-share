@@ -45,7 +45,7 @@ export default function TestPage(props: {
           sanitizedHref + "?variant=" + randomInt,
         );
         setShareTitle(() => {
-          let title = `Я прошел тест 'Какое ты дерево?' %0Aмой результат - `;
+          let title = `%0Я прошел тест 'Какое ты дерево?' %0Aмой результат - `;
 
           switch (randomInt) {
             case "1":
