@@ -45,22 +45,32 @@ export default function TestPage(props: {
           sanitizedHref + "?variant=" + randomInt,
         );
         setShareTitle(() => {
-          let title = `%0Я прошел тест 'Какое ты дерево?' %0AМой результат - `;
+          let title = [
+            "Я прошел тест 'Какое ты дерево?'",
+            "Мой результат - ",
+            "Попробуй и ты!",
+          ];
 
           switch (randomInt) {
             case "1":
-              title += "Дуб";
+              title[1] += "Дуб";
               break;
             case "2":
-              title += "Берёза";
+              title[1] += "Берёза";
               break;
             case "3":
-              title += "Липа";
+              title[1] += "Липа";
               break;
           }
-          title = `${title}` + "%0AПопробуй и ты!";
+          // check for telegram
+          if (2) {
+            title[0] = "%0A" + title[0];
+            title[1] = "%0A" + title[1];
+            title[2] = "%0A" + title[2];
+          }
+          const result = title.join(" ");
 
-          return title;
+          return result;
         });
         setResult(() => {
           switch (randomInt) {
