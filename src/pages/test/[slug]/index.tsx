@@ -45,7 +45,7 @@ export default function TestPage(props: {
           sanitizedHref + "?variant=" + randomInt,
         );
         setShareTitle(() => {
-          let title = "Я прошел тест 'Какое ты дерево?' и мой результат - ";
+          let title = `Я прошел тест 'Какое ты дерево?' %0Aмой результат - `;
 
           switch (randomInt) {
             case "1":
@@ -58,6 +58,8 @@ export default function TestPage(props: {
               title += "Липа";
               break;
           }
+          title = `${title}` + "%0AПопробуй и ты!";
+
           return title;
         });
         setResult(() => {
@@ -79,7 +81,7 @@ export default function TestPage(props: {
 
   useEffect(() => {
     if (window !== undefined) {
-      shareLink = `https://telegram.me/share/url?url=${window.location.href}&text=[title из api telegram]${shareTitle}`;
+      shareLink = `https://telegram.me/share/url?url=${window.location.href}&text=${shareTitle}`;
     }
   }, [shareTitle]);
 
@@ -149,7 +151,8 @@ export const getServerSideProps: GetServerSideProps = async (
 
   const data = { result: "" };
 
-  const seoDescription = "[og:description] Тест про деревья";
+  const seoDescription =
+    "[og:description] Наш новый тест по итогам которого вы сможете наконец понять какое вы дерево";
   const seoImage = {
     alt: "",
     url: "",
@@ -157,8 +160,7 @@ export const getServerSideProps: GetServerSideProps = async (
     height: OG_IMAGE.HEIGHT,
   };
 
-  let seoTitle =
-    "[og:title] Я прошел тест 'Какое ты дерево?' и мой результат - ";
+  let seoTitle = "[og:title] Тест 'Какое ты дерево?'";
 
   switch (variant) {
     case "1":

@@ -1,4 +1,4 @@
-export const DEFAULT_TITLE = "[title]Тестовый сайт";
+export const DEFAULT_TITLE = "Тестовый сайт";
 export const DEFAULT_DESCRIPTION = "[description]Описание тестового сайта";
 
 export const OG_IMAGE = {
@@ -13,13 +13,13 @@ const TWITTER_OG = {
 };
 
 export default {
-  defaultTitle: DEFAULT_TITLE,
+  defaultTitle: "[title]" + DEFAULT_TITLE,
   description: DEFAULT_DESCRIPTION,
   openGraph: {
     type: "website",
     locale: "ru_RU",
     title: DEFAULT_TITLE,
-    site_name: DEFAULT_TITLE,
+    site_name: "[og:sitename]" + DEFAULT_TITLE,
   },
   twitter: TWITTER_OG,
 };
