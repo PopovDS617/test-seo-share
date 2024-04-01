@@ -19,7 +19,8 @@ export default function TestPage(props: {
   const [shareTitle, setShareTitle] = useState(seo.title);
   const [result, setResult] = useState(data.result);
 
-  let shareLink = "";
+  let shareLinkTg = "";
+  let shareLinkVk = "";
   let leftIndent = 0;
   let topIndent = 0;
 
@@ -83,7 +84,8 @@ export default function TestPage(props: {
           }
         });
       }
-      shareLink = `https://telegram.me/share/url?url=${window.location.href}&text=${shareTitle}`;
+      shareLinkTg = `https://telegram.me/share/url?url=${window.location.href}&text=${shareTitle}`;
+      shareLinkVk = `https://vk.com/share.php?url=${window.location.href}&title=${shareTitle}`;
       leftIndent = (window.screen.width - windowW) / 2;
       topIndent = (window.screen.height - windowH) / 2;
     }
@@ -91,7 +93,8 @@ export default function TestPage(props: {
 
   useEffect(() => {
     if (window !== undefined) {
-      shareLink = `https://telegram.me/share/url?url=${window.location.href}&text=${shareTitle}`;
+      shareLinkTg = `https://telegram.me/share/url?url=${window.location.href}&text=${shareTitle}`;
+      shareLinkVk = `https://vk.com/share.php?url=${window.location.href}&title=${shareTitle}`;
     }
   }, [shareTitle]);
 
@@ -100,7 +103,8 @@ export default function TestPage(props: {
 
   const params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=${windowW},height=${windowH},left=${leftIndent},top=${topIndent}`;
 
-  const handleOpenShareMenu = () => window.open(shareLink, "Тест", params);
+  const handleOpenShareMenuTg = () => window.open(shareLinkTg, "Тест", params);
+  const handleOpenShareMenuVk = () => window.open(shareLinkVk, "Тест", params);
 
   const pageBody = (
     <div className="flex h-full flex-col items-center justify-center  gap-2">
@@ -127,10 +131,16 @@ export default function TestPage(props: {
         Пройти еще раз
       </button>
       <button
-        onClick={handleOpenShareMenu}
+        onClick={handleOpenShareMenuTg}
         className="color rounded-md bg-cyan-500 p-2 font-mono text-2xl"
       >
-        share
+        share TG
+      </button>
+      <button
+        onClick={handleOpenShareMenuVk}
+        className="color rounded-md bg-cyan-500 p-2 font-mono text-2xl"
+      >
+        share VK
       </button>
     </div>
   );
@@ -176,7 +186,6 @@ export const getServerSideProps: GetServerSideProps = async (
     case "1":
       data.result = "Дуб";
       seoImage.url = "/d.jpg";
-
       break;
     case "2":
       data.result = "Берёза";
@@ -186,12 +195,10 @@ export const getServerSideProps: GetServerSideProps = async (
     case "3":
       data.result = "Липа";
       seoImage.url = "/l.jpg";
-
       break;
     default:
       data.result = "";
       seoImage.url = "/default.jpg";
-
       break;
   }
 
