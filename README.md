@@ -1,14 +1,5 @@
-# usual:
+Результат шеринга в телеграмм:
+![image](https://github.com/PopovDS617/test-seo-share/blob/master/scrshot-tg.png)
 
-### npm install
-
-### npm run dev
-
-
-# optional:
-
-### npm i -g npm-check-updates
-
-### ncu -u
-
-### npm install
+Результат шеринга в ВК
+![image](https://github.com/PopovDS617/test-seo-share/blob/master/scrshot-vk.png)
