@@ -16,7 +16,7 @@ export default function ExamplePage() {
 
   const seoImage = {
     alt: "",
-    url: "result-1.png",
+    url: "/result-1.png",
     width: OG_IMAGE.WIDTH,
     height: OG_IMAGE.HEIGHT,
   };
